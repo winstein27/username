@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+
+import UsernameForm from './components/form/UsernameForm';
+import Usernames from './components/username/Usernames';
+
+const INITIAL_USERNAMES = [
+    { name: 'Max', age: 20 },
+    { name: 'Bob', age: 30 },
+];
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [usernames, setUsernames] = useState(INITIAL_USERNAMES);
+
+    const addUsername = (username) => {
+        setUsernames((prevUsernames) => [...prevUsernames, username]);
+    };
+
+    return (
+        <>
+            <UsernameForm addUsername={addUsername} />
+            <Usernames usernames={usernames} />
+        </>
+    );
 }
 
 export default App;

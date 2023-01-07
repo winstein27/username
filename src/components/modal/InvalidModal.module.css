@@ -1,0 +1,47 @@
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: rgba(255, 255, 255, 1);
+    margin: 15% auto;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 10px;
+}
+
+.modal-controls {
+    background-color: rgba(255, 255, 255, 1);
+    text-align: right;
+    border-radius: 0 0 8px 8px;
+    margin-top: 30px;
+}
+
+.modal-controls button {
+    background-color: rgb(87, 0, 87);
+    color: white;
+    border: none;
+    padding: 5px 20px;
+    margin: 15px;
+}
+
+.content-title {
+    background-color: rgb(87, 0, 87);
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 8px 8px 0 0;
+    font-size: 22px;
+}
+
+.content-message {
+    background-color: rgba(255, 255, 255, 1);
+    padding: 30px 15px;
+}

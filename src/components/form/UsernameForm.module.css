@@ -1,0 +1,18 @@
+.form * {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.form input {
+    border: 1px solid rgb(158, 157, 157);
+    width: 100%;
+    padding: 7px;
+}
+
+.form button {
+    background: rgb(87, 0, 87);
+    color: white;
+    padding: 4px 20px;
+    border: none;
+}

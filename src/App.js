@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import './App.css';
+
 import UsernameForm from './components/form/UsernameForm';
 import Usernames from './components/username/Usernames';
 
@@ -16,10 +18,10 @@ function App() {
     };
 
     return (
-        <>
+        <div className="app">
             <UsernameForm addUsername={addUsername} />
             <Usernames usernames={usernames} />
-        </>
+        </div>
     );
 }
 

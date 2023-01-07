@@ -13,6 +13,8 @@ const UsernameForm = (props) => {
 
         const username = { name: inputedName, age: inputedAge };
         props.addUsername(username);
+        setInputedName('');
+        setInputedAge('');
     };
 
     const nameInputHandler = (event) => {

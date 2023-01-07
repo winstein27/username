@@ -7,15 +7,39 @@ import InvalidModal from '../modal/InvalidModal';
 
 const UsernameForm = (props) => {
     const [inputedName, setInputedName] = useState('');
-    const [inputedAge, setInputedAge] = useState(0);
+    const [inputedAge, setInputedAge] = useState('');
+    const [openModal, setOpenModal] = useState({ open: false, message: '' });
 
     const onSubmitFormHandler = (event) => {
         event.preventDefault();
 
-        const username = { name: inputedName, age: inputedAge };
-        props.addUsername(username);
-        setInputedName('');
-        setInputedAge('');
+        if (!inputedName.trim().length && inputedAge < 1) {
+            setOpenModal({
+                open: true,
+                message:
+                    'Please, enter a valid name and age (non-empty name and age > 0).',
+            });
+        } else if (!inputedName.trim().length) {
+            setOpenModal({
+                open: true,
+                message: 'Please, enter a valid name (non-empty value).',
+            });
+        } else if (inputedAge < 1) {
+            setOpenModal({
+                open: true,
+                message: 'Please, enter a valid age ( >0 ).',
+            });
+        } else {
+            const username = {
+                id: Math.random().toString(),
+                name: inputedName,
+                age: inputedAge,
+            };
+            props.addUsername(username);
+
+            setInputedName('');
+            setInputedAge('');
+        }
     };
 
     const nameInputHandler = (event) => {
@@ -26,19 +50,27 @@ const UsernameForm = (props) => {
         setInputedAge(event.target.value);
     };
 
+    const closeModal = () => {
+        setOpenModal({ open: false, message: '' });
+    };
+
     return (
         <>
-            <InvalidModal />
+            <InvalidModal
+                hidden={!openModal.open}
+                message={openModal.message}
+                closeModal={closeModal}
+            />
             <Card>
                 <form className={styles.form} onSubmit={onSubmitFormHandler}>
-                    <label for="name">Username</label>
+                    <label htmlFor="name">Username</label>
                     <input
                         id="name"
                         type="text"
                         value={inputedName}
                         onChange={nameInputHandler}
                     />
-                    <label for="age">Age (Years)</label>
+                    <label htmlFor="age">Age (Years)</label>
                     <input
                         id="age"
                         type="number"

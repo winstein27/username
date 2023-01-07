@@ -2,12 +2,12 @@ import styles from './InvalidModal.module.css';
 
 const InvalidModal = (props) => {
     return (
-        <div className={styles.modal} hidden={true}>
+        <div className={styles.modal} hidden={props.hidden}>
             <div className={styles['modal-content']}>
-                <div className={styles['content-title']}>Title</div>
-                <div className={styles['content-message']}>Invalid input</div>
+                <div className={styles['content-title']}>Invalid input</div>
+                <div className={styles['content-message']}>{props.message}</div>
                 <div className={styles['modal-controls']}>
-                    <button>Okay</button>
+                    <button onClick={props.closeModal}>Okay</button>
                 </div>
             </div>
         </div>

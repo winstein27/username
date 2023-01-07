@@ -5,7 +5,7 @@ const UsernamesList = (props) => {
         <div className={styles.username}>
             {props.usernames.map((username) => {
                 return (
-                    <p>
+                    <p key={username.id}>
                         {username.name} ({username.age} years old)
                     </p>
                 );
